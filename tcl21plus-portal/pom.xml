@@ -1,0 +1,98 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <artifactId>tcl21plus</artifactId>
+        <groupId>com.movit.study</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>tcl21plus-portal</artifactId>
+    <packaging>war</packaging>
+    <name>tcl21plus-portal Maven Webapp</name>
+    <url>http://maven.apache.org</url>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <!-- this profile is for "localhost" environment-->
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <filters>
+                    <filter>config-dev/config-dev.properties</filter>
+                </filters>
+            </build>
+        </profile>
+        <profile>
+            <!-- this profile is for "localhost-test" environment-->
+            <id>debug</id>
+            <build>
+                <filters>
+                    <filter>config-dev/config-debug.properties</filter>
+                </filters>
+            </build>
+        </profile>
+        <profile>
+            <!-- this profile is for "localhost-debug" environment-->
+            <id>test</id>
+            <build>
+                <filters>
+                    <filter>config-dev/config-test.properties</filter>
+                </filters>
+            </build>
+        </profile>
+    </profiles>
+
+    <build>
+        <finalName>tcl21plus-portal</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/portal</path>
+                    <port>8080</port>
+                    <uriEncoding>UTF-8</uriEncoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <configuration>
+                            <tasks>
+                                <echo message="********************** overwrite config.js*************************"/>
+                                <echo message="** copy target/classes/js to target/${project.artifactId}-${project.version}/js/"/>
+                                <echo message="********************** ********************************************"/>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
