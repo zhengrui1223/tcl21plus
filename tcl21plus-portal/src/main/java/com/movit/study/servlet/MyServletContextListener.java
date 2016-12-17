@@ -60,7 +60,7 @@ public class MyServletContextListener implements ServletContextListener {
             }
         }
 
-        System.out.println("########################### fds项目关闭了");
+        System.out.println("###########################项目关闭了");
     }
 
 }
