@@ -11,6 +11,7 @@ public class TestHello {
 
     @RequestMapping("/hello")
     public String test(){
+
         return "<h1>hello world!!!</h1>";
     }
 }

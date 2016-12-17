@@ -1,6 +1,6 @@
 import org.junit.Test;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.XmlWebApplicationContext;
+
+import java.io.*;
 
 /**
  * Created by admin on 2016/11/27.
@@ -8,8 +8,11 @@ import org.springframework.web.context.support.XmlWebApplicationContext;
 public class TestConnection {
 
     @Test
-    public void test(){
-        WebApplicationContext context = new XmlWebApplicationContext();
-        context.getBean("");
+    public void test() throws IOException {
+        BufferedOutputStream outputStream = new BufferedOutputStream(
+                new FileOutputStream(new File("F:/apps/apache-tomcat-7.0.70/webapps/portal/count.txt")));
+        outputStream.write("hello".getBytes());
+        outputStream.flush();
+        outputStream.close();
     }
 }

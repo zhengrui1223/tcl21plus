@@ -19,6 +19,10 @@
     </listener-class>
   </listener>
 
+  <listener>
+    <listener-class>com.movit.study.servlet.MyServletContextListener</listener-class>
+  </listener>
+
   <!-- Spring character filter 处理乱码-->
   <filter>
     <filter-name>encodingFilter</filter-name>
@@ -76,6 +80,32 @@
   <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>*.html</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>hello</servlet-name>
+    <servlet-class>com.movit.study.servlet.HelloServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>hello</servlet-name>
+    <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>hello1</servlet-name>
+    <servlet-class>com.movit.study.servlet.Hello1Servlet</servlet-class>
+    <init-param>
+      <param-name>test</param-name>
+      <param-value>hello</param-value>
+    </init-param>
+    <init-param>
+      <param-name>test1</param-name>
+      <param-value>hello1</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>hello1</servlet-name>
+    <url-pattern>/hello1</url-pattern>
   </servlet-mapping>
 
 </web-app>
