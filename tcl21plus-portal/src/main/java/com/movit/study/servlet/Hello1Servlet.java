@@ -1,6 +1,7 @@
 package com.movit.study.servlet;
 
 import com.movit.study.model.User;
+import com.movit.study.servlet.base.AbstractHttpServlet;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -40,9 +41,9 @@ public class Hello1Servlet extends AbstractHttpServlet {
             writer.write("<br/> name:" + name + " value:" + value);
         }*/
 
-        String test = getInitParameter("test");
-        String test1 = getInitParameter("test1");
-        writer.write("<br/> name:test "  + " value:" + test);
+        String test = getInitParameter("testParam");
+        String test1 = getInitParameter("testParam1");
+        writer.write("<br/> name:test " + " value:" + test);
         writer.write("<br/> name:test1 " + " value:" + test1);
 
         String asString = objectMapper.writeValueAsString(user);
@@ -50,21 +51,16 @@ public class Hello1Servlet extends AbstractHttpServlet {
         writer.write("<br/>" + asString);
         writer.write("<br/> " + contextPath);
 
-//        URL url = servletContext.getResource("db.properties");
-//        Object content = url.getContent();
-//        String asString1 = objectMapper.writeValueAsString(content);
-//        writer.write("<br/>" + asString1);
-
         log("###############################");
 
         int count;
         Object countObj = servletContext.getAttribute("count");
-        if(countObj == null){
+        if (countObj == null) {
             count = 1;
             servletContext.setAttribute("count", new Integer(count));
-        }else {
-            count = (Integer)countObj;
-            count ++;
+        } else {
+            count = (Integer) countObj;
+            count++;
             servletContext.setAttribute("count", new Integer(count));
         }
 

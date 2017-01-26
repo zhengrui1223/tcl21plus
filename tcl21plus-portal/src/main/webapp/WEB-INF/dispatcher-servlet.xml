@@ -10,17 +10,18 @@
     <mvc:annotation-driven />
 
     <!-- 配置包扫描位置（会在此包下扫描@controller控制器） -->
-    <context:component-scan base-package="com.movit.study.controller" />
+    <!--<context:component-scan base-package="com.movit.study.controller" />-->
 
-    <!--&lt;!&ndash; 配置视图解析器（jsp文件前缀后缀） &ndash;&gt;
+    <!-- 配置视图解析器（jsp文件前缀后缀） -->
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix">
-            <value>/WEB-INF/jsp/</value>
+            <value>/WEB-INF/page/</value>
         </property>
         <property name="suffix">
             <value>.jsp</value>
         </property>
-    </bean>-->
+    </bean>
+
 
 </beans>

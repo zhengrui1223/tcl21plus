@@ -1,4 +1,4 @@
-package com.movit.study.servlet;
+package com.movit.study.listener;
 
 import org.springframework.util.StringUtils;
 
@@ -15,21 +15,21 @@ import java.net.URL;
 public class MyServletContextListener implements ServletContextListener {
 
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        try {
-            ServletContext servletContext = servletContextEvent.getServletContext();
-            InputStream inputStream = this.getClass().getResourceAsStream("count.txt");
-
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-
-            String countStr = bufferedReader.readLine();
-            if(!StringUtils.isEmpty(countStr)){
-                int count = Integer.parseInt(countStr);
-                servletContext.setAttribute("count", count);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            ServletContext servletContext = servletContextEvent.getServletContext();
+//            InputStream inputStream = this.getClass().getResourceAsStream("count.txt");
+//
+//            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+//
+//            String countStr = bufferedReader.readLine();
+//            if(!StringUtils.isEmpty(countStr)){
+//                int count = Integer.parseInt(countStr);
+//                servletContext.setAttribute("count", count);
+//            }
+//
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         System.out.println("###########################项目启动了");
     }
 
@@ -44,10 +44,14 @@ public class MyServletContextListener implements ServletContextListener {
             File file  = new File(realPath);
             System.out.println("###################file=" + file.getAbsolutePath());
 
+            InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("count.txt");
+
             try {
-//                BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(file));
-//                outputStream.write(new Integer(5).toString().getBytes());
-//                outputStream.write("hello".getBytes());
+                BufferedInputStream bs = new BufferedInputStream(inputStream);
+
+                BufferedOutputStream outputStream = new BufferedOutputStream(new FileOutputStream(file));
+                outputStream.write(new Integer(5).toString().getBytes());
+                outputStream.write("hello".getBytes());
 
                 PrintWriter printWriter = new PrintWriter(realPath);
                 printWriter.write(3);

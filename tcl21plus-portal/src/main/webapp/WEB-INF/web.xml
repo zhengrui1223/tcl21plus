@@ -20,7 +20,7 @@
   </listener>
 
   <listener>
-    <listener-class>com.movit.study.servlet.MyServletContextListener</listener-class>
+    <listener-class>com.movit.study.listener.MyServletContextListener</listener-class>
   </listener>
 
   <!-- Spring character filter 处理乱码-->
@@ -63,20 +63,19 @@
     <servlet-class>
       org.springframework.web.servlet.DispatcherServlet
     </servlet-class>
-    <init-param>
+    <!--<init-param>
       <param-name>contextConfigLocation</param-name>
       <param-value>
-        <!-- dispatcher-servlet.xml文件路径 -->
+        &lt;!&ndash; dispatcher-servlet.xml文件路径 &ndash;&gt;
         /WEB-INF/dispatcher-servlet.xml
       </param-value>
-    </init-param>
+    </init-param>-->
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
     <servlet-name>dispatcher</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
-
   <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>*.html</url-pattern>
@@ -95,17 +94,89 @@
     <servlet-name>hello1</servlet-name>
     <servlet-class>com.movit.study.servlet.Hello1Servlet</servlet-class>
     <init-param>
-      <param-name>test</param-name>
+      <param-name>testParam</param-name>
       <param-value>hello</param-value>
     </init-param>
     <init-param>
-      <param-name>test1</param-name>
+      <param-name>testParam1</param-name>
       <param-value>hello1</param-value>
     </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>hello1</servlet-name>
     <url-pattern>/hello1</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>upload</servlet-name>
+    <servlet-class>com.movit.study.servlet.UpLoadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>upload</servlet-name>
+    <url-pattern>/upload</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>toLogin</servlet-name>
+    <servlet-class>com.movit.study.servlet.ToLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>toLogin</servlet-name>
+    <url-pattern>/toLogin</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>doLogin</servlet-name>
+    <servlet-class>com.movit.study.servlet.DoLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>doLogin</servlet-name>
+    <url-pattern>/doLogin</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>toUpload</servlet-name>
+    <servlet-class>com.movit.study.servlet.ToUploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>toUpload</servlet-name>
+    <url-pattern>/toUpload</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>redirect</servlet-name>
+    <servlet-class>com.movit.study.servlet.RedirectServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>redirect</servlet-name>
+    <url-pattern>/redirect</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>adder</servlet-name>
+    <servlet-class>com.movit.study.servlet.AdderServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>adder</servlet-name>
+    <url-pattern>/adder</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>download</servlet-name>
+    <servlet-class>com.movit.study.servlet.DownLoadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>download</servlet-name>
+    <url-pattern>/download</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>jspDemo1</servlet-name>
+    <servlet-class>com.movit.study.servlet.JspDemo1Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>jspDemo1</servlet-name>
+    <url-pattern>/jspDemo1</url-pattern>
   </servlet-mapping>
 
 </web-app>
