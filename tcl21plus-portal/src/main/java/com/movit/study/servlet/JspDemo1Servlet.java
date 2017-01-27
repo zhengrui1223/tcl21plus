@@ -29,7 +29,7 @@ public class JspDemo1Servlet extends AbstractHttpServlet{
         ServletContext servletContext = req.getServletContext();
         servletContext.setAttribute("nameServletContext", "test_servletContext");
 
-        req.getRequestDispatcher("/WEB-INF/page/jsp/demo1.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/page/jsp/EL_page.jsp").forward(req, resp);
     }
 
     @Override
