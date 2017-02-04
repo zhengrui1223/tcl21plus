@@ -15,6 +15,7 @@ public class IteratorDemo {
         list.add("c");
         list.add("d");
 
+
         ListIterator<String> listIterator = list.listIterator();
         //ListIterator<String> listIterator = list.listIterator(2);
         while (listIterator.hasNext()){

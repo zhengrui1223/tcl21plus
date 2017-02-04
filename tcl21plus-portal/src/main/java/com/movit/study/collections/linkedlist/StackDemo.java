@@ -7,7 +7,7 @@ import java.util.LinkedList;
  * 栈 通常是指 [后进先出]
  * 最后压入栈的元素,第一个弹出来
  */
-public class Stack<T> {
+public class StackDemo<T> {
 
     private LinkedList<T> storage = new LinkedList<T>();
 
@@ -32,7 +32,7 @@ public class Stack<T> {
     }
 
     public static void main(String[] args) {
-        /*Stack<String> stack = new Stack<String>();
+        /*StackDemo<String> stack = new StackDemo<String>();
         stack.push("a");
         stack.push("b");
         stack.push("c");
@@ -50,7 +50,7 @@ public class Stack<T> {
         /**
          * 表达式求值, 其中 "+" 便是 "将后面的字母压进栈", 而"-" 表示 "弹出栈顶字母并打印它"
          */
-        Stack<String> stack = new Stack<String>();
+        StackDemo<String> stack = new StackDemo<String>();
         String str = "+U+n+c---+e+r+t---+a-+i-+n+t+y---+-+r+u--+l+s---";
 
         char[] chars = str.toCharArray();
