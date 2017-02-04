@@ -18,40 +18,13 @@
             <version>4.11</version>
             <scope>test</scope>
         </dependency>
-    </dependencies>
 
-    <profiles>
-        <profile>
-            <!-- this profile is for "localhost" environment-->
-            <id>dev</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <build>
-                <filters>
-                    <filter>config-dev/config-dev.properties</filter>
-                </filters>
-            </build>
-        </profile>
-        <profile>
-            <!-- this profile is for "localhost-test" environment-->
-            <id>debug</id>
-            <build>
-                <filters>
-                    <filter>config-dev/config-debug.properties</filter>
-                </filters>
-            </build>
-        </profile>
-        <profile>
-            <!-- this profile is for "localhost-debug" environment-->
-            <id>test</id>
-            <build>
-                <filters>
-                    <filter>config-dev/config-test.properties</filter>
-                </filters>
-            </build>
-        </profile>
-    </profiles>
+        <dependency>
+            <groupId>com.movit.study</groupId>
+            <artifactId>tcl21plus-service</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
     <build>
         <finalName>tcl21plus-portal</finalName>
