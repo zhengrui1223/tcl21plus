@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.movit.dao.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.movit.model.User" >
+<mapper namespace="com.movit.dao.PersonMapper" >
+  <resultMap id="BaseResultMap" type="com.movit.model.Person" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -9,29 +9,34 @@
   <sql id="Base_Column_List" >
     id, name, password
   </sql>
+
   <select id="findAll" resultMap="BaseResultMap" >
     select
     <include refid="Base_Column_List" />
-    from user
+    from person
   </select>
+
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from user
+    from person
     where id = #{id,jdbcType=INTEGER}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from user
+    delete from person
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.movit.model.User" >
-    insert into user (id, name, password
+
+  <insert id="insert" parameterType="com.movit.model.Person" >
+    insert into person (id, name, password
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.movit.model.User" >
-    insert into user
+
+  <insert id="insertSelective" parameterType="com.movit.model.Person" >
+    insert into person
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -55,8 +60,9 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.movit.model.User" >
-    update user
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.movit.model.Person" >
+    update person
     <set >
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -67,10 +73,12 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.movit.model.User" >
-    update user
+
+  <update id="updateByPrimaryKey" parameterType="com.movit.model.Person" >
+    update person
     set name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
 </mapper>

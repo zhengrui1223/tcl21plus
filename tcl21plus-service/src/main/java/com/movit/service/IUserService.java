@@ -5,6 +5,6 @@ import com.movit.model.User;
 /**
  * Created by admin on 2017/2/5.
  */
-public interface IUserService {
-    User getUserById(Integer id);
+public interface IUserService extends IBaseService<User> {
+
 }
