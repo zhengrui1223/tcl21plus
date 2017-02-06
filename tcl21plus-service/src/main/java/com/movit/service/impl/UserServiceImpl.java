@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 /**
  * Created by admin on 2017/2/5.
  */
-@Service("userService")
+@Service
 public class UserServiceImpl implements IUserService {
 
     @Resource
