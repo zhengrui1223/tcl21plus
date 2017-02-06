@@ -1,6 +1,5 @@
 package user;
 
-import com.movit.model.Person;
 import com.movit.model.User;
 import com.movit.service.IUserService;
 import org.junit.Test;
