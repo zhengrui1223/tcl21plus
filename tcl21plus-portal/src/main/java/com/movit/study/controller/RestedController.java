@@ -1,25 +1,42 @@
 package com.movit.study.controller;
 
-import com.movit.study.model.User;
+import com.movit.model.User;
+import com.movit.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by admin on 2016/11/27.
  */
-@RestController()
+@RestController("/testUser")
 public class RestedController {
+    @Autowired
+    private IUserService userService;
 
-    @RequestMapping(method = RequestMethod.GET, value = "/RestController", produces = "application/json")
+    @RequestMapping(method = RequestMethod.GET)
     @ResponseStatus(HttpStatus.OK)
-    public User test(){
-        User user = new User();
-        user.setId(1);
-        user.setName("test");
-        user.setPassWord("123456");
-        return user;
+    public List<User> getAllUser(){
+        return userService.findAll();
+    }
+
+    @RequestMapping(value = "/{id}",method = RequestMethod.GET)
+    @ResponseStatus(HttpStatus.OK)
+    public User getUserById(@PathVariable("id") String id){
+        return userService.getById(Integer.parseInt(id));
+    }
+
+    @RequestMapping(method = RequestMethod.POST, produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public boolean insertUser(@RequestBody User user){
+        return userService.insert(user);
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public boolean updateUser(@RequestBody User user){
+        return userService.update(user);
     }
 }
