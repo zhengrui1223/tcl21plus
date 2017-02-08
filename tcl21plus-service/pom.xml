@@ -66,8 +66,8 @@
             </resource>
         </resources>
 
-        <!-- 自动生成model dao  mapping -->
-        <plugins>
+        <!-- 自动生成model dao  mapping 使用过后注释掉,防止再次生成-->
+        <!--<plugins>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
@@ -93,7 +93,7 @@
                     </dependency>
                 </dependencies>
             </plugin>
-        </plugins>
+        </plugins>-->
     </build>
 
 </project>
