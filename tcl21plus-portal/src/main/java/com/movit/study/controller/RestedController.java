@@ -1,6 +1,10 @@
 package com.movit.study.controller;
 
+import com.movit.study.model.User;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -9,9 +13,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController()
 public class RestedController {
 
-    @RequestMapping("/RestController")
-    public String test(){
-
-        return "<h1>hello world!!!</h1>";
+    @RequestMapping(method = RequestMethod.GET, value = "/RestController", produces = "application/json")
+    @ResponseStatus(HttpStatus.OK)
+    public User test(){
+        User user = new User();
+        user.setId(1);
+        user.setName("test");
+        user.setPassWord("123456");
+        return user;
     }
 }
