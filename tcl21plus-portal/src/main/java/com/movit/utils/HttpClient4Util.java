@@ -1,6 +1,5 @@
 package com.movit.utils;
 
-import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -9,7 +8,8 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,6 +18,7 @@ import java.io.InputStream;
  * Created by Administrator on 2017/2/8.
  */
 public class HttpClient4Util {
+    private static Logger log = LoggerFactory.getLogger(HttpClient4Util.class);
 
     public static String callByGet(HttpGet httpGet) {
         CloseableHttpClient httpClient = HttpClients.createDefault();
@@ -30,7 +31,7 @@ public class HttpClient4Util {
 
             return result;
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
             return null;
         }
     }
@@ -45,16 +46,14 @@ public class HttpClient4Util {
             stringEntity.setContentType("application/json");
 
             httpPost.setEntity(stringEntity);
-
             CloseableHttpResponse httpResponse = httpClient.execute(httpPost);
 
             HttpEntity entity = httpResponse.getEntity();
             String result = parseResponse(entity);
             httpResponse.close();
-
             return result;
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
             return null;
         }
     }
@@ -72,7 +71,7 @@ public class HttpClient4Util {
             inputStream.close();
             return stringBuffer.toString();
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error(e.getMessage(), e);
             return null;
         }
     }
