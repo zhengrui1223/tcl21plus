@@ -4,12 +4,22 @@ package com.movit.study.exception;
  * Created by admin on 2017/2/7.
  */
 public class ExceptionDemo {
-    public static void main(String [] args){
+    public static void main(String[] args) {
         try {
-            throw new MyDemoException("############");
-        } catch (MyDemoException e1) {
-            e1.printStackTrace();
+            f();
+        } catch (MyDemoException e) {
+//            e.printStackTrace();
+//            e.printStackTrace(System.out);
+            StackTraceElement[] stackTrace = e.getStackTrace();
+            for (StackTraceElement stackTraceElement : stackTrace){
+                System.out.println(stackTraceElement);
+            }
         }
+
+    }
+
+    private static void f() throws MyDemoException {
+        throw new MyDemoException("############");
     }
 }
 

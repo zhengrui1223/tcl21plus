@@ -19,6 +19,7 @@
         <slf4j.version>1.7.7</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
         <version.jackson>2.4.1</version.jackson>
+        <version.simple-spring-memcached>3.5.0</version.simple-spring-memcached>
     </properties>
 
     <dependencies>
@@ -229,6 +230,19 @@
             <artifactId>httpclient</artifactId>
             <version>4.5.2</version>
         </dependency>
+
+        <!--simple-spring-memcached-->
+        <dependency>
+            <groupId>com.google.code.simple-spring-memcached</groupId>
+            <artifactId>simple-spring-memcached</artifactId>
+            <version>${version.simple-spring-memcached}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.code.simple-spring-memcached</groupId>
+            <artifactId>xmemcached-provider</artifactId>
+            <version>${version.simple-spring-memcached}</version>
+        </dependency>
+
 
     </dependencies>
 </project>
