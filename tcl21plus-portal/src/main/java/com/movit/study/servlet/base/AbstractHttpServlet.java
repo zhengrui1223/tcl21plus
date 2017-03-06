@@ -1,7 +1,8 @@
 package com.movit.study.servlet.base;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import org.codehaus.jackson.map.ObjectMapper;
+
 import javax.servlet.http.HttpServlet;
 
 /**
