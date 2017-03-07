@@ -14,11 +14,10 @@ import java.util.Iterator;
 public class DomParse {
 
     public static String readXml() {
-        File file = new File("F:/dom4j.xml");
+        File file = new File("E:/dom4j.xml");
 
         try {
             BufferedInputStream inputStream = new BufferedInputStream(new FileInputStream(file));
-
             int len;
             byte[] b = new byte[1024];
             StringBuffer sb = new StringBuffer();
@@ -53,20 +52,17 @@ public class DomParse {
         Iterator iterator = element.elementIterator();
         while (iterator.hasNext()){
             Element next = (Element)iterator.next();
-            /*if (next.getName().equals("IV_TYPE")) {
+            if (next.getName().equals("IV_MESSAGE")) {
                 System.out.println(next.getText());
+
             }
-            if (next.getName().equals("IV_MESSAGE")){
-                System.out.println(next.getText());
-            }*/
-            System.out.println(next.getText());
+
             iteratorXml(next);
         }
     }
 
     public static void main(String[] args) {
         //System.out.println(readXml());
-
         parseXml(readXml());
     }
 }
