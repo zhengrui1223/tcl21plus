@@ -9,6 +9,9 @@
      http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
      http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
+    <!-- 由于simple-spring-memcached主要是基于AOP的代理，所以加入<aop:aspectj-autoproxy />让代理机制起到作用。-->
+    <aop:aspectj-autoproxy />
+
     <!-- ====事务相关控制== -->
     <bean id="transactionManager"
           class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

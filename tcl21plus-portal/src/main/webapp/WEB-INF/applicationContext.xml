@@ -11,5 +11,6 @@
     <import resource="classpath:spring/spring-mybatis.xml"/>
     <import resource="classpath:spring/spring-jms.xml"/>
     <import resource="classpath:spring/spring-memcached.xml"/>
+    <import resource="classpath:spring/spring-task.xml"/>
 
 </beans>
