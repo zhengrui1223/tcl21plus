@@ -1,12 +1,25 @@
 package com.movit.model;
 
-public class User {
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.google.code.ssm.api.CacheKeyMethod;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.Serializable;
+
+public class User implements Serializable {
+    private Logger logger = LoggerFactory.getLogger(User.class);
+    private static final long serialVersionUID = 1L;
+
     private Integer id;
 
     private String name;
 
     private String password;
 
+    @CacheKeyMethod
     public Integer getId() {
         return id;
     }
@@ -33,6 +46,28 @@ public class User {
 
     @Override
     public String toString() {
-        return "id:" + id + " name:" + name + " password:" + password;
+        ObjectMapper mapper = DaoObjectMapper.getSerializeMapper();
+        String jsonString = null;
+        try {
+            jsonString = mapper.writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            logger.warn("fail to parse entity " + getClass().getName(), e);
+        }
+        return jsonString == null ? super.toString() : jsonString;
+    }
+
+    private static class DaoObjectMapper {
+        private static ObjectMapper serializeMapper;
+
+        public synchronized static ObjectMapper getSerializeMapper() {
+            if (serializeMapper == null) {
+                serializeMapper = new ObjectMapper();
+                serializeMapper.configure(SerializationFeature.INDENT_OUTPUT, false);
+                serializeMapper.configure(SerializationFeature.WRITE_NULL_MAP_VALUES, false);
+                serializeMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+                serializeMapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+            }
+            return serializeMapper;
+        }
     }
 }
