@@ -38,11 +38,11 @@ public class DownLoadServlet extends AbstractHttpServlet {
 
         // 使用ClassLoader读取资源文件，相对于类目录(即classes)
 
-        resp.setContentType("application/force-download");
-        resp.setHeader("Content-Disposition","attachment;filename=db.properties");
+        resp.setHeader("Content-Type","application/force-download");
+        resp.setHeader("Content-Disposition","attachment;filename=config-common.properties");
         ServletOutputStream outputStream = resp.getOutputStream();
 
-        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("db.properties");
+        InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("config-common.properties");
 
         byte [] b = new byte[1024];
         int len;

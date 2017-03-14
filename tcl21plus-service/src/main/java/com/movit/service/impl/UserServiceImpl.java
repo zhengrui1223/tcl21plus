@@ -1,7 +1,6 @@
 package com.movit.service.impl;
 
 import com.google.code.ssm.api.ParameterValueKeyProvider;
-import com.google.code.ssm.api.ReadThroughAssignCache;
 import com.google.code.ssm.api.ReadThroughSingleCache;
 import com.movit.dao.UserMapper;
 import com.movit.model.User;
