@@ -256,6 +256,12 @@
             <version>3.15</version>
         </dependency>
 
+        <!--c3p0 data pool -->
+        <dependency>
+            <groupId>com.mchange</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.2.1</version>
+        </dependency>
 
     </dependencies>
 </project>
