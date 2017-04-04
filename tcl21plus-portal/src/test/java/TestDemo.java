@@ -29,4 +29,20 @@ public class TestDemo {
         List<String> list = testDemo.fizzBuzz(20);
         System.out.println(list);
     }
+
+    public  int f1(){
+        int count = 0;
+        try {
+            return ++count;
+        }catch (Exception e){
+        }finally {
+            return ++count;
+        }
+    }
+
+    @Test
+    public void test2() {
+        int s = f1();
+        System.out.println(s);
+    }
 }
