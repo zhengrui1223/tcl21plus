@@ -33,5 +33,12 @@ class Test{
         thread1.start();
         thread2.start();
         thread3.start();
+
+        /*TicketWindows2 threadWindows1 = new TicketWindows2();
+        TicketWindows2 threadWindows2 = new TicketWindows2();
+        TicketWindows2 threadWindows3 = new TicketWindows2();
+        threadWindows1.start();
+        threadWindows2.start();
+        threadWindows3.start();*/
     }
 }
