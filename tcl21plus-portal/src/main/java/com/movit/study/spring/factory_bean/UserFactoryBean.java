@@ -15,6 +15,7 @@ public class UserFactoryBean implements FactoryBean {
         return User.class;
     }
 
+    //设置bean的scope类型
     public boolean isSingleton() {
         return false;
     }
