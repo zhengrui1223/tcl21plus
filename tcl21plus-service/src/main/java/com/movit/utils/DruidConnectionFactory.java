@@ -28,13 +28,23 @@ public class DruidConnectionFactory {
         //dataSource.setPoolPreparedStatements(false);
     }
 
-    public static Connection getConnection() throws SQLException {
-        return dataSource.getConnection();
+    public static Connection getConnection(){
+        try {
+            return dataSource.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
-    public static Connection getConnection(String testName) throws SQLException {
+    public static Connection getConnection(String testName) {
         System.out.println(testName);
-        return dataSource.getConnection();
+        try {
+            return dataSource.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static void main(String[] args) throws SQLException {
