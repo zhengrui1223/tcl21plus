@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="connection1" class="com.movit.utils.DruidConnectionFactory" factory-method="getConnection">
+    </bean>
+
+    <!-- 构造方式传入的是工厂方法的参数,而不是静态工厂方法实现类的构造方法的参数 -->
+    <bean id="connection2" class="com.movit.utils.DruidConnectionFactory" factory-method="getConnection">
+        <constructor-arg name="testName" value="test############"></constructor-arg>
+    </bean>
+
+    <bean id="druidConnection" class="com.movit.study.spring.static_method_factory.DruidConnection">
+        <!--<constructor-arg name="connection" ref="connection1"></constructor-arg>-->
+        <constructor-arg name="connection" ref="connection2"></constructor-arg>
+    </bean>
+
+</beans>

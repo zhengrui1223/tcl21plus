@@ -33,7 +33,5 @@ public class ListDemo {
 
         Apple[] applesArray = list3.toArray(new Apple[0]);
 
-
-
     }
 }

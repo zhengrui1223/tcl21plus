@@ -32,6 +32,11 @@ public class DruidConnectionFactory {
         return dataSource.getConnection();
     }
 
+    public static Connection getConnection(String testName) throws SQLException {
+        System.out.println(testName);
+        return dataSource.getConnection();
+    }
+
     public static void main(String[] args) throws SQLException {
         for (int i = 0; i < 15; i++) {
             Connection con = dataSource.getConnection();
