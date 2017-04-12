@@ -9,7 +9,7 @@ import org.springframework.core.io.FileSystemResource;
  */
 public class DruidConnectionTest {
     public static void main(String []args){
-        XmlBeanFactory beanFactory = new XmlBeanFactory(new FileSystemResource("E:\\git_down\\tcl21plus\\tcl21plus-portal\\src\\main\\resources\\study\\spring\\static_method_factory.xml"));
+        XmlBeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("\\study\\spring\\static_method_factory.xml"));
         DruidConnection druidConnection = beanFactory.getBean(DruidConnection.class);
         druidConnection.printAddress();
     }

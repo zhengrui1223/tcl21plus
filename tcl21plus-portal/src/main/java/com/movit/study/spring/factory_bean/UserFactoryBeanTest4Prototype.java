@@ -1,6 +1,7 @@
 package com.movit.study.spring.factory_bean;
 
 import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 
 /**
@@ -8,7 +9,7 @@ import org.springframework.core.io.FileSystemResource;
  */
 public class UserFactoryBeanTest4Prototype {
     public static void main(String []args){
-        XmlBeanFactory beanFactory = new XmlBeanFactory(new FileSystemResource("E:\\git_down\\tcl21plus\\tcl21plus-portal\\src\\main\\resources\\study\\spring\\factory_bean4_prototype.xml"));
+        XmlBeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("\\study\\spring\\factory_bean4_prototype.xml"));
 
         //xml中使用<lookup-method name="" bean=""/>注入,解决UserFactoryBeanTest中的重复bean注入问题
         for (int i=0; i<3; i++) {

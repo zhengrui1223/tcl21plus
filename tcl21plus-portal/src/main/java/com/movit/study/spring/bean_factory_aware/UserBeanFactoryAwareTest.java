@@ -2,6 +2,7 @@ package com.movit.study.spring.bean_factory_aware;
 
 import com.movit.study.spring.no_static_method_factory.DruidConnectionNew;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.FileSystemResource;
 
 /**
@@ -9,7 +10,7 @@ import org.springframework.core.io.FileSystemResource;
  */
 public class UserBeanFactoryAwareTest {
     public static void main(String[]args){
-        XmlBeanFactory beanFactory = new XmlBeanFactory(new FileSystemResource("E:\\git_down\\tcl21plus\\tcl21plus-portal\\src\\main\\resources\\study\\spring\\bean_factory_aware.xml"));
+        XmlBeanFactory beanFactory = new XmlBeanFactory(new ClassPathResource("/study/spring/bean_factory_aware.xml"));
         UserBeanFactoryAware userBeanFactoryAware = beanFactory.getBean(UserBeanFactoryAware.class);
         userBeanFactoryAware.setBeanFactory(beanFactory);
 
