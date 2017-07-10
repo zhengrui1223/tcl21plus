@@ -46,9 +46,9 @@ public class TaskDemo {
          "0 15 10 ? * 6#3" 每月的第三个星期五上午10:15触发
      */
 
-    @Scheduled(cron = "*/5 * * * * ?")
+    /*@Scheduled(cron = "*//*5 * * * * ?")
     public void print(){
         String time = DateFormat.getDateTimeInstance().format(new Date());
         logger.info("定时器触发打印############## "+time);
-    }
+    }*/
 }
