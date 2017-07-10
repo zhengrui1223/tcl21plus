@@ -16,6 +16,7 @@
     <properties>
         <!--设置 Spring 的版本-->
         <org.springframework.version>4.1.2.RELEASE</org.springframework.version>
+        <org.apache.activemq>5.7.0</org.apache.activemq>
         <slf4j.version>1.7.7</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
         <version.jackson>2.4.1</version.jackson>
@@ -102,7 +103,7 @@
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-core</artifactId>
-            <version>5.7.0</version>
+            <version></version>
         </dependency>
 
         <!--添加aspectjweaver包 -->
