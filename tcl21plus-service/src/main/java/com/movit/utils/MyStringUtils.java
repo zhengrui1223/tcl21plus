@@ -13,7 +13,7 @@ package com.movit.utils;
 
 import java.text.DecimalFormat;
 
-public class StringUtils {
+public class MyStringUtils {
     public static String captureName(String name) {
         char[] cs = name.toCharArray();
         cs[0] -= 32;

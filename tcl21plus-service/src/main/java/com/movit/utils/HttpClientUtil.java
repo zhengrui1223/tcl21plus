@@ -1,14 +1,12 @@
 package com.movit.utils;
 
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.JSONObject;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.*;
 import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.http.entity.ContentType;
@@ -16,11 +14,15 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class HttpClientUtil {
@@ -118,30 +120,30 @@ public class HttpClientUtil {
 
     /**
      *
-     * @param instanceUrl
-     * @param soql
-     * @param userToken
+     * @param url
+     * @param queryParams
+     * @param accessToken
      * @return
      */
-    private JSONObject query(String url, String[] queryParams, String accessToken) {
+    private JSONObject query(String url, Map<String, String> paramsMap, String accessToken) {
         JSONObject jsonResp = new JSONObject();
         List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-        url = url + StringPool.QUESTION + URLEncodedUtils.format(params, StringPool.UTF8);
+        //拼接get方式URL, url?a=11&b=22
+        if (!paramsMap.isEmpty()) {
+            for (String key: paramsMap.keySet()) {
+                params.add(new BasicNameValuePair(key, paramsMap.get(key)));
+            }
+        }
+        url += StringPool.QUESTION + URLEncodedUtils.format(params, StringPool.UTF8);
+
         CloseableHttpClient httpClient = SSLUtil.createSSLInsecureClient();
         HttpGet get = new HttpGet(url);
         try {
             get.setHeader("Authorization", "Bearer " + accessToken);
             HttpResponse response = httpClient.execute(get);
-            JSONObject obj = handleResponse(response);
+            jsonResp = handleResponse(response);
 
-            if (obj.containsKey("records")) {
-                jsonResp.put("records", obj.getJSONArray("records"));
-            } else if (obj.containsKey("tokenExpired")) {
-                jsonResp.put("tokenExpired", true);
-            } else if (obj.containsKey("error")) {
-                jsonResp.put("error", obj.getString("error"));
-            }
         } catch (Exception e) {
             log.error(e.getMessage());
         } finally {
@@ -170,7 +172,7 @@ public class HttpClientUtil {
         if (HttpStatus.SC_UNAUTHORIZED == response.getStatusLine().getStatusCode()) {
             String result = EntityUtils.toString(entity);
             JSONObject obj = new JSONArray(result).getJSONObject(0);
-            if (org.springframework.util.StringUtils.equals("INVALID_SESSION_ID", obj.getString("errorCode"))) {
+            if (StringUtils.equals("INVALID_SESSION_ID", obj.getString("errorCode"))) {
                 jsonResp.put("tokenExpired", true);
             }
         } else if (HttpStatus.SC_CREATED == response.getStatusLine().getStatusCode()) {

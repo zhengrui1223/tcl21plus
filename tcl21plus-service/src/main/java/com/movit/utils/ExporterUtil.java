@@ -54,7 +54,7 @@ public class ExporterUtil {
         int j = 0;
         for (String field : fields) {
             HSSFCell cell = row.createCell(j++);
-            String methodName = StringUtils.generateGetMethodName(field);
+            String methodName = MyStringUtils.generateGetMethodName(field);
             Method method = model.getClass().getMethod(methodName);
 
             Object obj = method.invoke(model);
