@@ -25,7 +25,7 @@ public class Holder extends Thread {
             }
         }*/
 
-        for (int i=0; i<10; i++) {
+        for (int i = 0; i < 10; i++) {
             System.out.println(Thread.currentThread().getName() + " : " + nn);
             nn--;
             try {
@@ -121,12 +121,50 @@ class MyThread1 implements Runnable {
 class TestAtomicInteger1 {
     public static void main(String[] args) throws InterruptedException {
         MyThread1 mt = new MyThread1();
+        Thread[] threads = new Thread[5];
+        for (int i = 0; i < 5; i++) {
+            threads[i] = new Thread(mt);
+            threads[i].start();
+        }
 
-        Thread t1 = new Thread(mt);
-        Thread t2 = new Thread(mt);
-        t1.start();
-        t2.start();
-        Thread.sleep(500);
+        while (Thread.activeCount() > 1) {
+            Thread.yield();
+        }
+        //Thread.sleep(500);
         System.out.println(MyThread1.i);
+    }
+}
+
+/**
+ * volatile变量自增运算测试
+ * *
+ *
+ * @author zzm
+ */
+class VolatileTest {
+    public static volatile int race = 0;
+
+    public static void increase() {
+        race++;
+    }
+
+    private static final int THREADS_COUNT = 20;
+
+    public static void main(String[] args) {
+        Thread[] threads = new Thread[THREADS_COUNT];
+        for (int i = 0; i < THREADS_COUNT; i++) {
+            threads[i] = new Thread(new Runnable() {
+                public void run() {
+                    for (int i = 0; i < 10; i++) {
+                        increase();
+                    }
+                }
+            });
+            threads[i].start();
+        }
+        //等待所有累加线程都结束
+        while (Thread.activeCount() > 1)
+            Thread.yield();
+        System.out.println(race);
     }
 }
