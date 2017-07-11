@@ -37,7 +37,7 @@ public class HttpClientUtil {
      * @param accessToken
      * @return
      */
-    private JSONObject create(String url, JSONObject object, String accessToken) {
+    public JSONObject create(String url, JSONObject object, String accessToken) {
         JSONObject jsonResp = new JSONObject();
         CloseableHttpClient httpClient = SSLUtil.createSSLInsecureClient();
         HttpPost post = new HttpPost(url);
@@ -67,7 +67,7 @@ public class HttpClientUtil {
      * @param userToken
      * @return
      */
-    private JSONObject update(String patchUrl, JSONObject object, String userToken) {
+    public JSONObject update(String patchUrl, JSONObject object, String userToken) {
         JSONObject jsonResp = new JSONObject();
         CloseableHttpClient httpClient = SSLUtil.createSSLInsecureClient();
         HttpPatch patch = new HttpPatch(patchUrl);
@@ -97,7 +97,7 @@ public class HttpClientUtil {
      * @param accessToken
      * @return
      */
-    private JSONObject delete(String deleteUrl, String accessToken) {
+    public JSONObject delete(String deleteUrl, String accessToken) {
         JSONObject jsonResp = new JSONObject();
         CloseableHttpClient httpClient = SSLUtil.createSSLInsecureClient();
         HttpDelete delete = new HttpDelete(deleteUrl);
@@ -123,21 +123,21 @@ public class HttpClientUtil {
     /**
      *
      * @param url
-     * @param queryParams
+     * @param paramsMap
      * @param accessToken
      * @return
      */
-    private JSONObject query(String url, Map<String, String> paramsMap, String accessToken) {
+    public JSONObject query(String url, Map<String, String> paramsMap, String accessToken) {
         JSONObject jsonResp = new JSONObject();
         List<NameValuePair> params = new ArrayList<NameValuePair>();
 
         //拼接get方式URL, url?a=11&b=22
-        if (!paramsMap.isEmpty()) {
+        if (paramsMap != null && !paramsMap.isEmpty()) {
             for (String key: paramsMap.keySet()) {
                 params.add(new BasicNameValuePair(key, paramsMap.get(key)));
             }
+            url += StringPool.QUESTION + URLEncodedUtils.format(params, StringPool.UTF8);
         }
-        url += StringPool.QUESTION + URLEncodedUtils.format(params, StringPool.UTF8);
 
         CloseableHttpClient httpClient = SSLUtil.createSSLInsecureClient();
         HttpGet get = new HttpGet(url);
@@ -161,13 +161,12 @@ public class HttpClientUtil {
     }
 
     /**
-     * Handle response
      *
      * @param response
-     * @return TODO: need to explicit the return type
+     * @return
      * @throws IOException
      */
-    private JSONObject handleResponse(HttpResponse response)
+    public JSONObject handleResponse(HttpResponse response)
             throws IOException {
         JSONObject jsonResp = new JSONObject();
         HttpEntity entity = response.getEntity();

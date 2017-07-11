@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by admin on 2016/12/21.
@@ -33,8 +34,8 @@ public class AdderServlet extends AbstractHttpServlet {
         sum += increase;
         writer.write(sum + "</h1>");*/
 
-        //使用线程同步处理
-        synchronized (this) {
+        //使用线程同步处理synchronized
+        /*synchronized (this) {
             writer.write("<h1>" + sum + "+" + increase + "=");
             try {
                 Thread.sleep(3000);
@@ -43,7 +44,23 @@ public class AdderServlet extends AbstractHttpServlet {
             }
             sum += increase;
             writer.write(sum + "</h1>");
+        }*/
+
+        //ReentrantLock
+        ReentrantLock reentrantLock = new ReentrantLock();
+        try {
+            reentrantLock.lock();
+            writer.write("<h1>" + sum + "+" + increase + "=");
+            Thread.sleep(3000);
+
+            sum += increase;
+            writer.write(sum + "</h1>");
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            reentrantLock.unlock();
         }
+
         writer.flush();
         writer.close();
 
