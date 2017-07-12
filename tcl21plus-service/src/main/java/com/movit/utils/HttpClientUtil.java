@@ -139,6 +139,8 @@ public class HttpClientUtil {
             url += StringPool.QUESTION + URLEncodedUtils.format(params, StringPool.UTF8);
         }
 
+        log.info("request get url = " + url);
+
         CloseableHttpClient httpClient = SSLUtil.createSSLInsecureClient();
         HttpGet get = new HttpGet(url);
         try {

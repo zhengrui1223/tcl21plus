@@ -6,7 +6,9 @@ import java.util.Map;
 
 /**
  * Created by admin on 2017/7/11.
- * 恶汉式
+ * 饿汉式
+ * 饿汉式没有线程安全问题
+ * 饿汉式的缺点是类一加载就实例化，提前占用系统资源
  */
 public class Singleton1 {
     private Map<String, Object> map = new HashMap<String, Object>();
