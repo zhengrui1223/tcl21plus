@@ -1,8 +1,8 @@
 package com.movit.study.model;
 
-/**
- * Created by admin on 2016/11/27.
- */
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public class User {
     private Integer id;
     private String name;
@@ -47,5 +47,15 @@ public class User {
 
     public void setPassWord(String passWord) {
         this.passWord = passWord;
+    }
+
+    @Override
+    public String toString() {
+        try {
+            return super.toString() +" " + new ObjectMapper().writeValueAsString(this);
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
