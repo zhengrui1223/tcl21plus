@@ -1,9 +1,7 @@
 package com.movit.study.spring.bean_factory_aware;
 
-import com.movit.study.spring.no_static_method_factory.DruidConnectionNew;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.FileSystemResource;
 
 /**
  * Created by Administrator on 2017/4/11.
