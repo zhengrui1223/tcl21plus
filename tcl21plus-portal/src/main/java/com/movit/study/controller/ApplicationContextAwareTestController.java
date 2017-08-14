@@ -1,6 +1,6 @@
 package com.movit.study.controller;
 
-import com.movit.study.applicationContextAware.ApplicationContextAwareTest;
+import com.movit.study.spring.applicationContextAware.ApplicationContextAwareTest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package com.movit.study.autowire;
+package com.movit.study.spring.autowire;
 
 /**
  * Created by Administrator on 2017/4/13.

@@ -1,4 +1,4 @@
-package com.movit.study.autowire;
+package com.movit.study.spring.autowire;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
