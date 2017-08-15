@@ -1,4 +1,4 @@
-package com.movit.study.spring.proxy.simple_proxy;
+package com.movit.study.spring.proxy.simple_subject_proxy;
 
 public class SubjectServiceProxy implements ISubject{
     private ISubject subject;
