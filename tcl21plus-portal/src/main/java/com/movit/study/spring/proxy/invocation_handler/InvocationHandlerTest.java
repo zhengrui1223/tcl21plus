@@ -9,6 +9,7 @@ import java.lang.reflect.Proxy;
 
 /**
  * 我们通过InvocationHandler来拦截所有的request方法
+ *  JDK动态代理方式.基于接口
  */
 public class InvocationHandlerTest {
 
