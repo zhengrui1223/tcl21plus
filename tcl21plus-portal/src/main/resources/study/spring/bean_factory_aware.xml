@@ -7,7 +7,7 @@
 
     <!-- 通过BeanFactoryAutoWare,实现每次获取不同的User实例,就相当于每次获取User的
     时候都从BeanFactory中再取一遍 -->
-    <bean id="userBeanFactoryAware" class="com.movit.study.spring.bean_factory_aware.UserBeanFactoryAware" scope="prototype">
+    <bean id="userBeanFactoryAware" class="com.movit.study.spring.ioc.bean_factory_aware.UserBeanFactoryAware" scope="prototype">
     </bean>
 
 

@@ -5,6 +5,6 @@
 
     <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
-    <bean id="bean1" class="com.movit.study.spring.autowire.Bean1"></bean>
-    <bean id="bean2" class="com.movit.study.spring.autowire.Bean2"></bean>
+    <bean id="bean1" class="com.movit.study.spring.ioc.autowire.Bean1"></bean>
+    <bean id="bean2" class="com.movit.study.spring.ioc.autowire.Bean2"></bean>
 </beans>

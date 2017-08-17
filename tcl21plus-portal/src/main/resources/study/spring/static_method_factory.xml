@@ -12,15 +12,15 @@
         <constructor-arg name="testName" value="test############"></constructor-arg>
     </bean>
 
-    <bean id="druidConnection1" class="com.movit.study.spring.static_method_factory.DruidConnection">
+    <bean id="druidConnection1" class="com.movit.study.spring.ioc.static_method_factory.DruidConnection">
         <!--<constructor-arg name="connection" ref="connection1"></constructor-arg>-->
         <constructor-arg name="connection" ref="connection2"></constructor-arg>
     </bean>
 
     <!-- 非静态工厂方法依赖注入 -->
-    <bean id="druidConnectionFactoryNew" class="com.movit.study.spring.no_static_method_factory.DruidConnectionFactoryNew"/>
+    <bean id="druidConnectionFactoryNew" class="com.movit.study.spring.ioc.no_static_method_factory.DruidConnectionFactoryNew"/>
     <bean id="connection3" factory-bean="druidConnectionFactoryNew" factory-method="getConnection"></bean>
-    <bean id="druidConnection2" class="com.movit.study.spring.no_static_method_factory.DruidConnectionNew">
+    <bean id="druidConnection2" class="com.movit.study.spring.ioc.no_static_method_factory.DruidConnectionNew">
         <constructor-arg name="connection" ref="connection3"></constructor-arg>
     </bean>
 

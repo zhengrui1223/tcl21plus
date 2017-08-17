@@ -3,16 +3,16 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="MyBeanPostProcessor" class="com.movit.study.spring.bean_post_processor.MyBeanPostProcessor"/>
+    <bean id="MyBeanPostProcessor" class="com.movit.study.spring.ioc.bean_post_processor.MyBeanPostProcessor"/>
 
-    <bean id="MyBeanFactoryPostProcessor" class="com.movit.study.spring.bean_factory_post_processor.MyBeanFactoryPostProcessor"/>
+    <bean id="MyBeanFactoryPostProcessor" class="com.movit.study.spring.ioc.bean_factory_post_processor.MyBeanFactoryPostProcessor"/>
 
-    <bean id="postProcessorUserBean" class="com.movit.study.spring.bean_post_processor.PostProcessorUserBean" >
+    <bean id="postProcessorUserBean" class="com.movit.study.spring.ioc.bean_post_processor.PostProcessorUserBean" >
         <property name="username" value="user"></property>
         <property name="password" value="123456"></property>
     </bean>
 
-    <bean id="postProcessorPersonBean" class="com.movit.study.spring.bean_post_processor.PostProcessorPersonBean" >
+    <bean id="postProcessorPersonBean" class="com.movit.study.spring.ioc.bean_post_processor.PostProcessorPersonBean" >
         <property name="username" value="person"></property>
         <property name="password" value="abc123"></property>
     </bean>
