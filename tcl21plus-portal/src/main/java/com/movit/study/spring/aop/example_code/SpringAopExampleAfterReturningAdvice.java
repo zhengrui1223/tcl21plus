@@ -1,4 +1,4 @@
-package com.movit.study.spring.aop.example;
+package com.movit.study.spring.aop.example_code;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;

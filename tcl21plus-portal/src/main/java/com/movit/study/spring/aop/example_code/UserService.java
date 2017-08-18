@@ -1,8 +1,12 @@
-package com.movit.study.spring.aop.example;
+package com.movit.study.spring.aop.example_code;
 
 import com.movit.study.model.User;
 
 public class UserService {
+
+    public UserService(){
+
+    }
 
     public User getUserInfo(String userName, String passWord) {
         User user = new User();

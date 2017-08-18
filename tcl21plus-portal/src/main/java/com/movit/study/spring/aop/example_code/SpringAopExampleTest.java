@@ -1,4 +1,4 @@
-package com.movit.study.spring.aop.example;
+package com.movit.study.spring.aop.example_code;
 
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
