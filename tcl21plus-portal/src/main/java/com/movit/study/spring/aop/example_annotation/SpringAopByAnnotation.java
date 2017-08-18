@@ -13,7 +13,7 @@ import java.util.Arrays;
 @SuppressWarnings("Duplicates")
 @Aspect
 @Component
-public class SpringAdviceByAnnotation {
+public class SpringAopByAnnotation {
     private static int userId;
 
     @Pointcut(value = "execution(* com.movit.study.spring.aop.example_code.UserService.*(..))")

@@ -9,7 +9,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import java.util.Arrays;
 
 @SuppressWarnings("Duplicates")
-public class SpringAdviceByXml {
+public class SpringAopByXml {
     private static int userId;
 
     public void beforeAdvice(JoinPoint joinPoint) throws JsonProcessingException {
