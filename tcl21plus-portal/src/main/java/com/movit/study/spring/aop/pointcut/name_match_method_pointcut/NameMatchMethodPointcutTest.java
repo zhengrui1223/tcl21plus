@@ -12,7 +12,7 @@ public class NameMatchMethodPointcutTest {
 
         Method[] methods = User.class.getMethods();
 
-        pointcut.setMappedNames(new String[] {"get*", "to*"});//一个正则表达式, 应该就是用户配置的
+        pointcut.setMappedNames(new String[] {"get*", "to*"});
         boolean matches = pointcut.matches(methods[0], User.class);
         System.out.println(matches);
 

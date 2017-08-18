@@ -17,12 +17,12 @@ public class SpringAopExampleAroundAdvice implements MethodInterceptor {
         //判断登录用户是否为admin
         Object[] arguments = methodInvocation.getArguments();
         if ("admin".equals(arguments[0])) {
-            System.out.println("you can't find admin's info");
+            System.out.println("不可访问admin用户信息");
             return null;
         }
 
         //打印用户信息
-        User user = (User)methodInvocation.proceed();
+        User user = (User) methodInvocation.proceed();
         //为User的Id属性赋值
 
         //change user's info , set id

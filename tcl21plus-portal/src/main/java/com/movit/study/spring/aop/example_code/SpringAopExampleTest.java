@@ -10,7 +10,7 @@ public class SpringAopExampleTest {
         //切入点定义
         NameMatchMethodPointcut pointcut = new NameMatchMethodPointcut();
         //拦截哪些方法
-        pointcut.setMappedNames(new String[] {"get*", ""});
+        pointcut.setMappedNames(new String[]{"get*", ""});
 
         //Around Advice
         SpringAopExampleAroundAdvice aroundAdvice = new SpringAopExampleAroundAdvice();
@@ -22,26 +22,19 @@ public class SpringAopExampleTest {
         SpringAopExampleAfterReturningAdvice afterReturningAdvice = new SpringAopExampleAfterReturningAdvice();
 
         //切面定义
-        DefaultPointcutAdvisor advisor = new DefaultPointcutAdvisor();
-        advisor.setPointcut(pointcut);
-        advisor.setAdvice(aroundAdvice);
-        //advisor.setAdvice(beforeAdvice);
-        //advisor.setAdvice(throwsAdvice);
-        //advisor.setAdvice(afterReturningAdvice);
+        DefaultPointcutAdvisor[] advisors = new DefaultPointcutAdvisor[]{new DefaultPointcutAdvisor(pointcut, aroundAdvice),
+                new DefaultPointcutAdvisor(pointcut, beforeAdvice),
+                new DefaultPointcutAdvisor(pointcut, throwsAdvice),
+                new DefaultPointcutAdvisor(pointcut, afterReturningAdvice)};
 
         //织入
         ProxyFactory proxyFactory = new ProxyFactory(new UserService());
-        proxyFactory.addAdvisor(advisor);
+        proxyFactory.addAdvisors(advisors);
 
         //使用目标代理对象
-        UserService userService = (UserService)proxyFactory.getProxy();
+        UserService userService = (UserService) proxyFactory.getProxy();
         userService.getUserInfo("jerry1", "123456");
-        userService.getUserInfo("jerry2", "123456");
-        userService.getUserInfo("jerry3", "123456");
-        userService.getUserInfo("jerry4", "123456");
-        userService.getUserInfo("jerry5", "123456");
         userService.getUserInfo("admin", "123456");
-
         //userService.getUserInfoException();
 
     }

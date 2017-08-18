@@ -1,10 +1,12 @@
 package com.movit.study.spring.aop.example_code;
 
 import com.movit.study.model.User;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserService {
 
-    public UserService(){
+    public UserService() {
 
     }
 

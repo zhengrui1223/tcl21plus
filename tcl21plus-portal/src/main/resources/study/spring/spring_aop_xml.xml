@@ -8,7 +8,7 @@
         http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
 
     <bean id="userService" class="com.movit.study.spring.aop.example_code.UserService"/>
-    <bean id="springAdvice" class="com.movit.study.spring.aop.example_xml.SpringAdvice"/>
+    <bean id="springAdvice" class="com.movit.study.spring.aop.example_xml.SpringAdviceByXml"/>
 
     <aop:config>
         <aop:aspect id="testAspect" ref="springAdvice">
