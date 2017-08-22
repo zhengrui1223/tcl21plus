@@ -4,8 +4,17 @@ package com.movit.study.model;
  * Created by admin on 2017/4/8.
  */
 public class Person {
+    private Integer id;
     private String name;
     private Integer age;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
