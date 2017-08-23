@@ -1,4 +1,4 @@
-package com.movit.study.controller;
+package com.movit.controller;
 
 import com.movit.study.base_of_java.singleton.Singleton1;
 import com.movit.study.base_of_java.singleton.Singleton2;

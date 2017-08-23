@@ -1,4 +1,4 @@
-package com.movit.study.controller;
+package com.movit.controller;
 
 import com.movit.study.spring.ioc.applicationContextAware.ApplicationContextAwareTest;
 import org.springframework.beans.factory.annotation.Autowired;

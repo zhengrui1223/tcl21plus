@@ -1,4 +1,4 @@
-package com.movit.study.controller;
+package com.movit.controller;
 
 import com.movit.model.User;
 import com.movit.service.IUserService;
