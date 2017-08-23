@@ -1,15 +1,8 @@
 package singleton;
 
-import com.movit.study.singleton.Singleton1;
-import com.movit.study.singleton.Singleton2;
-import com.movit.study.singleton.Singleton3;
-import com.movit.study.singleton.Singleton4;
+import com.movit.study.base_of_java.singleton.Singleton2;
 import com.movit.utils.HttpClientUtil;
 import org.json.JSONObject;
-import org.junit.Test;
-import org.springframework.util.StopWatch;
-
-import java.util.*;
 
 /**
  * Created by admin on 2017/7/11.

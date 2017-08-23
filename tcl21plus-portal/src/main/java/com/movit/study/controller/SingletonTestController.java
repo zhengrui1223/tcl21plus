@@ -1,9 +1,9 @@
 package com.movit.study.controller;
 
-import com.movit.study.singleton.Singleton1;
-import com.movit.study.singleton.Singleton2;
-import com.movit.study.singleton.Singleton3;
-import com.movit.study.singleton.Singleton4;
+import com.movit.study.base_of_java.singleton.Singleton1;
+import com.movit.study.base_of_java.singleton.Singleton2;
+import com.movit.study.base_of_java.singleton.Singleton3;
+import com.movit.study.base_of_java.singleton.Singleton4;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;

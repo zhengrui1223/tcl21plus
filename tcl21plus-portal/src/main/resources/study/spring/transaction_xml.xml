@@ -21,7 +21,7 @@
         <property name="transactionManager" ref="transactionManager"/>
         <property name="transactionAttributes">
             <props>
-                <prop key="get*">PROPAGATION_SUPPORTS</prop>
+                <prop key="get*">PROPAGATION_SUPPORTS,readOnly,timeout_20</prop>
                 <prop key="insert*">PROPAGATION_REQUIRED</prop>
                 <prop key="update*">PROPAGATION_REQUIRED</prop>
                 <prop key="delete*">PROPAGATION_REQUIRED</prop>
