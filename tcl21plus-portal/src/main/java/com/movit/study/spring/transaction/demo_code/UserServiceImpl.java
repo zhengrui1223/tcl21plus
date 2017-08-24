@@ -1,4 +1,4 @@
-package com.movit.study.spring.transaction.demo_xml;
+package com.movit.study.spring.transaction.demo_code;
 
 import com.movit.study.model.Person;
 import com.movit.study.model.User;
@@ -6,7 +6,10 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,9 +22,18 @@ import java.util.List;
 public class UserServiceImpl implements IUserService {
 
     private JdbcTemplate jdbcTemplate;
+    private TransactionTemplate transactionTemplate;
 
     public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
+    }
+
+    public TransactionTemplate getTransactionTemplate() {
+        return transactionTemplate;
+    }
+
+    public void setTransactionTemplate(PlatformTransactionManager transactionManager) {
+        transactionTemplate = new TransactionTemplate(transactionManager);
     }
 
     public User getUserById(Integer id) {

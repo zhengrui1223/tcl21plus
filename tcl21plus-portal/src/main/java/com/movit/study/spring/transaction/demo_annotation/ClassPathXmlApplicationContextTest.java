@@ -1,4 +1,4 @@
-package com.movit.study.spring.transaction.demo_xml;
+package com.movit.study.spring.transaction.demo_annotation;
 
 import com.movit.study.model.Person;
 import com.movit.study.model.User;
@@ -8,14 +8,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class ClassPathXmlApplicationContextTest {
 
     public static void main(String[] args) {
-        //ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:/study/spring/transaction_xml1.xml");
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:/study/spring/transaction_xml2.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:/study/spring/transaction_annotation1.xml");
 
         IUserService userService = (IUserService) context.getBean("userService");
 
-
-        //getUserById(userService, 1);
-        insert(userService);
+        getUserById(userService, 1);
+        //insert(userService);
         //update(userService);
         //delete(userService, 3);
 

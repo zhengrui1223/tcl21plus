@@ -1,11 +1,11 @@
-package com.movit.study.spring.transaction.demo_xml;
+package com.movit.study.spring.transaction.demo_annotation;
 
 import com.movit.study.model.Person;
 import com.movit.study.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementSetter;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.PreparedStatement;
@@ -18,11 +18,8 @@ import java.util.List;
 @Transactional
 public class UserServiceImpl implements IUserService {
 
+    @Autowired
     private JdbcTemplate jdbcTemplate;
-
-    public void setJdbcTemplate(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
 
     public User getUserById(Integer id) {
         final String sql = "select id, name, passWord from user where 1=1 and id =" + id;
