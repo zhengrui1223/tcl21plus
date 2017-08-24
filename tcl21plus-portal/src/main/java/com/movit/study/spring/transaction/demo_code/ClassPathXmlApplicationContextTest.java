@@ -4,6 +4,7 @@ import com.movit.study.model.Person;
 import com.movit.study.model.User;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.TransactionStatus;
+import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
@@ -16,7 +17,7 @@ public class ClassPathXmlApplicationContextTest {
         final UserServiceImpl userService = (UserServiceImpl) context.getBean("userService");
         TransactionTemplate transactionTemplate = userService.getTransactionTemplate();
 
-        transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+        /*transactionTemplate.execute(new TransactionCallbackWithoutResult() {
             public void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
                 try {
                     //getUserById(userService, 1);
@@ -29,7 +30,15 @@ public class ClassPathXmlApplicationContextTest {
                 }
 
             }
+        });*/
+
+        User user = (User) transactionTemplate.execute(new TransactionCallback<Object>() {
+            public Object doInTransaction(TransactionStatus transactionStatus) {
+                User user = getUserById(userService, 1);
+                return user;
+            }
         });
+        System.out.println(user);
 
     }
 
@@ -61,8 +70,9 @@ public class ClassPathXmlApplicationContextTest {
         System.out.println(insert);
     }
 
-    private static void getUserById(UserServiceImpl userService, int i) {
+    private static User getUserById(UserServiceImpl userService, int i) {
         User user = userService.getUserById(1);
-        System.out.println(user);
+        //System.out.println(user);
+        return user;
     }
 }
