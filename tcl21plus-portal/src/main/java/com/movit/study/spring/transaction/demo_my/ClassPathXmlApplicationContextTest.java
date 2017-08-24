@@ -1,10 +1,9 @@
-package com.movit.study.spring.transaction.demo_code;
+package com.movit.study.spring.transaction.demo_my;
 
 import com.movit.study.model.Person;
 import com.movit.study.model.User;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.transaction.TransactionStatus;
-import org.springframework.transaction.support.TransactionCallback;
 import org.springframework.transaction.support.TransactionCallbackWithoutResult;
 import org.springframework.transaction.support.TransactionTemplate;
 
@@ -12,38 +11,22 @@ import org.springframework.transaction.support.TransactionTemplate;
 public class ClassPathXmlApplicationContextTest {
 
     public static void main(String[] args) {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:/study/spring/transaction_code.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("classpath:/study/spring/transaction_my.xml");
 
         final UserServiceImpl userService = (UserServiceImpl) context.getBean("userService");
         TransactionTemplate transactionTemplate = userService.getTransactionTemplate();
 
-        /*transactionTemplate.execute(new TransactionCallbackWithoutResult() {
+        transactionTemplate.execute(new TransactionCallbackWithoutResult() {
             public void doInTransactionWithoutResult(TransactionStatus transactionStatus) {
                 try {
-                    //getUserById(userService, 1);
                     insert(userService);
-                    //update(userService);
-                    //delete(userService, 3);
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                     transactionStatus.setRollbackOnly();
                 }
 
             }
-        });*/
-
-        User user = (User) transactionTemplate.execute(new TransactionCallback<Object>() {
-            public Object doInTransaction(TransactionStatus transactionStatus) {
-                try{
-                    User user = getUserById(userService, 1);
-                    return user;
-                }catch (Exception e) {
-                    transactionStatus.setRollbackOnly();
-                    return null;
-                }
-            }
         });
-        System.out.println(user);
 
     }
 
@@ -63,12 +46,12 @@ public class ClassPathXmlApplicationContextTest {
 
     private static void insert(UserServiceImpl userService) {
         User user = new User();
-        user.setName("testName3");
+        user.setName("testName5");
         user.setPassWord("abc123");
 
         Person person = new Person();
         person.setAge(1);
-        person.setName("testPerson3");
+        person.setName("testPerson5");
 
         user.setPerson(person);
         User insert = userService.insert(user);
