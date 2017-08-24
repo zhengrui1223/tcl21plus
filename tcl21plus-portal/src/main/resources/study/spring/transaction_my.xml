@@ -10,16 +10,11 @@
 
     <import resource="classpath:spring-test-base.xml"/>
 
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <property name="dataSource" ref="dataSource"/>
-    </bean>
-
     <bean id="transactionManager" class="com.movit.study.spring.transaction.demo_my.MyTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
-    <bean id="userService" class="com.movit.study.spring.transaction.demo_my.UserServiceImpl">
-        <property name="jdbcTemplate" ref="jdbcTemplate"/>
+    <bean id="userService" class="com.movit.study.spring.transaction.demo_my.UserService">
         <property name="transactionTemplate" ref="transactionManager"/>
     </bean>
 
