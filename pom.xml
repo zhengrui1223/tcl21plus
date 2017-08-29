@@ -11,6 +11,7 @@
     <modules>
         <module>tcl21plus-portal</module>
         <module>tcl21plus-service</module>
+        <module>spring-mvc-simple</module>
     </modules>
 
     <properties>

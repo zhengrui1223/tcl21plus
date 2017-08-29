@@ -36,12 +36,12 @@
     </bean>
 
     <!-- 消息监听器 -->
-    <bean id="consumerMessageListener" class="com.movit.study.listener.QueueMessageListener"/>
+    <!--<bean id="consumerMessageListener" class="com.movit.study.listener.QueueMessageListener"/>-->
 
     <!-- 消息监听容器 -->
-    <bean id="parentListener" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+    <!--<bean id="parentListener" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory" />
         <property name="destination" ref="queueDestination" />
         <property name="messageListener" ref="consumerMessageListener" />
-    </bean>
+    </bean>-->
 </beans>
