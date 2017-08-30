@@ -12,14 +12,20 @@
 
     <!-- BeanNameUrlHandlerMapping -->
     <bean id="handlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+
+    <!-- 自定义controller继承AbstractController -->
     <bean name="/index.do" class="com.movit.controller.SimpleController">
         <property name="viewName" value="index"/>
     </bean>
 
-    <!--<bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping"/>
-    <bean name="/index.do" class="com.movit.controller.SimpleController">
-        <property name="viewName" value="index"/>
-    </bean>-->
+    <!-- 自定义controller继承MultiActionController -->
+    <bean id="parameterMethodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.ParameterMethodNameResolver">
+        <property name="methodParamNames" value="list,insert"/>
+        <property name="defaultMethodName" value="list"/>
+    </bean>
+    <bean name="/multi.do" class="com.movit.controller.GenericCRUDMultiActionController">
+        <property name="methodNameResolver" ref="parameterMethodNameResolver"/>
+    </bean>
 
     <!-- 配置视图解析器（jsp文件前缀后缀） -->
     <bean id="viewResolver"
