@@ -28,11 +28,19 @@ public class PersonServiceImpl implements IPersonService {
         return personMapper.deleteByPrimaryKey(id) > 0 ? true : false;
     }
 
-    public boolean insert(Person obj) {
-        return personMapper.insertSelective(obj) > 0 ? true : false;
+    public Person insert(Person person) {
+        int insert = personMapper.insertSelective(person);
+        if (insert >0) {
+            return person;
+        }
+        return null;
     }
 
-    public boolean update(Person obj) {
-        return personMapper.updateByPrimaryKey(obj) > 0 ? true : false;
+    public Person update(Person person) {
+        int update = personMapper.updateByPrimaryKey(person);
+        if (update >0) {
+            return person;
+        }
+        return null;
     }
 }

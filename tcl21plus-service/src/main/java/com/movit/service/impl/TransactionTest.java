@@ -20,7 +20,7 @@ public class TransactionTest {
 
     public boolean insert(User user, Person person) {
 
-        int success = userMapper.insertSelective(user);
+        int success = userMapper.insert(user);
 
         if (success > 0) {
             success = personMapper.insert(person);

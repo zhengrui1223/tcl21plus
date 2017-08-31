@@ -6,10 +6,12 @@
          http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
     <import resource="classpath:spring/spring-dao.xml"/>
-    <!--<import resource="classpath:spring/spring-dataSource.xml"/>
     <import resource="classpath:spring/spring-service.xml"/>
+    <import resource="classpath:spring/spring-dataSource.xml"/>
     <import resource="classpath:spring/spring-mybatis.xml"/>
-    <import resource="classpath:spring/spring-jms.xml"/>
+    <import resource="classpath:spring/spring-data-redis.xml"/>
+
+    <!--<import resource="classpath:spring/spring-jms.xml"/>
     <import resource="classpath:spring/spring-memcached.xml"/>
     <import resource="classpath:spring/spring-task.xml"/>-->
 

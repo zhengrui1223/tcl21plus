@@ -36,7 +36,7 @@ public class UserTest {
         user.setName("lisi");
         user.setPassword("123456");
 
-        boolean insert = userService.insert(user);
+        User insert = userService.insert(user);
         System.out.println("#########" + insert);
     }
 

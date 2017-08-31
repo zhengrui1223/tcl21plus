@@ -14,8 +14,6 @@ public interface PersonMapper {
 
     Person selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(Person record);
-
     int updateByPrimaryKey(Person record);
 
     List<Person> findAll();

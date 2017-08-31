@@ -27,12 +27,12 @@ public class RestedController {
     }
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
-    public boolean insertUser(@RequestBody User user){
+    public User insertUser(@RequestBody User user){
         return userService.insert(user);
     }
 
     @RequestMapping(method = RequestMethod.PUT, produces = "application/json")
-    public boolean updateUser(@RequestBody User user){
+    public User updateUser(@RequestBody User user){
         return userService.update(user);
     }
 }

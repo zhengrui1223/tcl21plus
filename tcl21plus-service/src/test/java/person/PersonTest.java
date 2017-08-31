@@ -39,7 +39,7 @@ public class PersonTest {
         person.setName("lisi");
         person.setPassword("123456");
 
-        boolean insert = personService.insert(person);
+        Person insert = personService.insert(person);
         System.out.println("#########" + insert);
     }
 
