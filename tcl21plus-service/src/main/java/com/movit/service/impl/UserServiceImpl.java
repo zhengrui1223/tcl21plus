@@ -2,11 +2,13 @@ package com.movit.service.impl;
 
 import com.movit.dao.UserMapper;
 import com.movit.model.User;
+import com.movit.model.base.BaseEntity;
 import com.movit.service.IUserService;
 import com.movit.service.impl.base.BaseService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,13 +18,16 @@ public class UserServiceImpl extends BaseService implements IUserService {
     private UserMapper userMapper;
 
     private static final String PREFIX_USER_KEY = "USER_INFO_";
+    private static final String PREFIX_USER_KEY_ALL = "USER_INFO_*";
 
     public List<User> findAll() {
-        /*ValueOperations<String, List<User>> operations = redisTemplate.opsForValue();
-        List<User> users = operations.get(User.class.getName() + PREFIX_USER_KEY);
-        if (CollectionUtils.isNotEmpty(users)) {
+
+        List<User> users = new ArrayList<User>();
+        findAllEntityInCacheByPrefix(PREFIX_USER_KEY_ALL, users);
+        if (users != null && !users.isEmpty()) {
             return users;
-        }*/
+        }
+
         return userMapper.findAll();
     }
 
@@ -45,7 +50,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
     public User insert(User user) {
         int insert = userMapper.insert(user);
         if (insert >0) {
-            insertEntity2Cache(PREFIX_USER_KEY, user);
+            updateEntity2Cache(PREFIX_USER_KEY, user);
             return user;
         }
         return null;
@@ -54,7 +59,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
     public User update(User user) {
         int update = userMapper.updateByPrimaryKey(user);
         if (update >0) {
-            insertEntity2Cache(PREFIX_USER_KEY, user);
+            updateEntity2Cache(PREFIX_USER_KEY, user);
             return user;
         }
         return null;

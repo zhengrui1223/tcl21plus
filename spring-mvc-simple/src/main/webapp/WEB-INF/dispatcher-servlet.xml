@@ -20,7 +20,7 @@
     <bean id="handlerMapping" class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
 
     <!-- 支持注解的HandlerMapping -->
-    <bean id="annotationHandlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
+    <bean id="annotationHandlerMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
 
     <!-- 自定义controller继承AbstractController -->
     <bean name="/index.do" class="com.movit.controller.SimpleController">
