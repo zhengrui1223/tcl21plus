@@ -9,7 +9,8 @@
     <import resource="classpath:spring/spring-service.xml"/>
     <import resource="classpath:spring/spring-dataSource.xml"/>
     <import resource="classpath:spring/spring-mybatis.xml"/>
-    <import resource="classpath:spring/spring-data-redis.xml"/>
+    <!--<import resource="classpath:spring/spring-data-redis.xml"/>-->
+    <import resource="classpath:spring/spring-redis-context.xml"/>
 
     <!--<import resource="classpath:spring/spring-jms.xml"/>
     <import resource="classpath:spring/spring-memcached.xml"/>

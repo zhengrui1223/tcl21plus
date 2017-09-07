@@ -43,6 +43,12 @@
         <property name="methodNameResolver" ref="parameterMethodNameResolver"/>
     </bean>
 
+    <bean id="personService" class="com.movit.service.impl.PersonServiceImpl"/>
+    <bean name="/person.do" class="com.movit.controller.PersonController">
+        <property name="personService" ref="personService"/>
+        <property name="methodNameResolver" ref="parameterMethodNameResolver"/>
+    </bean>
+
     <!-- 配置视图解析器（jsp文件前缀后缀） -->
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver">

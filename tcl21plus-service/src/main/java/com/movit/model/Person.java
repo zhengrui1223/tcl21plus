@@ -1,19 +1,11 @@
 package com.movit.model;
 
-public class Person {
-    private Integer id;
+import com.movit.model.base.BaseEntity;
 
+public class Person  extends BaseEntity {
     private String name;
 
     private String password;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -29,10 +21,5 @@ public class Person {
 
     public void setPassword(String password) {
         this.password = password == null ? null : password.trim();
-    }
-
-    @Override
-    public String toString() {
-        return "id:" + id + " name:" + name + " password:" + password;
     }
 }
