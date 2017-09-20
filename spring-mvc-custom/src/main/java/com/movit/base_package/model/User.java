@@ -1,4 +1,4 @@
-package com.movit.model;
+package com.movit.base_package.model;
 
 public class User {
     private Integer id;

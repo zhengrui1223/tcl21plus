@@ -17,7 +17,7 @@ public class ClassHelper {
     private static final Set<Class<?>> CLASSES;
 
     static {
-        CLASSES = ClassUtil.getClassSet("com.movit");
+        CLASSES = ClassUtil.getClassSet("com.movit.base_package");
     }
 
     public static Set<Class<?>> getClasses() {
@@ -27,7 +27,7 @@ public class ClassHelper {
     public static Set<Class<?>> getControllerClasses() {
         Set<Class<?>> controllerClasses = new HashSet<Class<?>>();
         if (CLASSES != null && CLASSES.size() > 0) {
-            for (Class<?> clazz: CLASSES) {
+            for (Class<?> clazz : CLASSES) {
                 if (clazz.isAnnotationPresent(Controller.class)) {
                     controllerClasses.add(clazz);
                 }
@@ -39,7 +39,7 @@ public class ClassHelper {
     public static Set<Class<?>> getServiceClasses() {
         Set<Class<?>> serviceClasses = new HashSet<Class<?>>();
         if (CLASSES != null && CLASSES.size() > 0) {
-            for (Class<?> clazz: CLASSES) {
+            for (Class<?> clazz : CLASSES) {
                 if (clazz.isAnnotationPresent(Service.class)) {
                     serviceClasses.add(clazz);
                 }
@@ -51,7 +51,7 @@ public class ClassHelper {
     public static Set<Class<?>> getRepositoryClasses() {
         Set<Class<?>> repositoryClasses = new HashSet<Class<?>>();
         if (CLASSES != null && CLASSES.size() > 0) {
-            for (Class<?> clazz: CLASSES) {
+            for (Class<?> clazz : CLASSES) {
                 if (clazz.isAnnotationPresent(Repository.class)) {
                     repositoryClasses.add(clazz);
                 }

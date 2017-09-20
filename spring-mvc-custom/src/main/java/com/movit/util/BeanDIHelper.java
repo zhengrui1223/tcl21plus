@@ -21,15 +21,15 @@ public class BeanDIHelper {
             for (Map.Entry<Class<?>, Object> entry : beanMap.entrySet()) {
                 Class<?> beanClass = entry.getKey();
                 Object beanInstance = entry.getValue();
-                Field[] fields = beanClass.getClass().getDeclaredFields();
+                Field[] fields = beanClass.getDeclaredFields();
 
                 if (ArrayUtils.isNotEmpty(fields)) {
                     for (Field field : fields) {
                         if (field.isAnnotationPresent(Autowired.class)) {
-                            Class<?> fieldType = field.getType();
-                            Object bean = BeanIocHelper.getBean(fieldType);
+                            Class<?> beanFieldClass = field.getType();
+                            Object injectBean = BeanIocHelper.getBean(beanFieldClass);
                             if (beanInstance != null) {
-                                ReflectionUtil.setField(beanInstance, field, bean);
+                                ReflectionUtil.setField(beanInstance, field, injectBean);
                             }
                         }
                     }

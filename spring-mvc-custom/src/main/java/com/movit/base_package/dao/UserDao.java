@@ -1,7 +1,7 @@
-package com.movit.dao;
+package com.movit.base_package.dao;
 
 import com.movit.annotation.Repository;
-import com.movit.model.User;
+import com.movit.base_package.model.User;
 
 import java.util.ArrayList;
 import java.util.List;

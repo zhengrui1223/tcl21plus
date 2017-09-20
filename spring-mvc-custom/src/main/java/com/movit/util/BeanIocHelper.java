@@ -18,7 +18,9 @@ public class BeanIocHelper {
         Set<Class<?>> classes = ClassHelper.getClasses();
         if (classes != null && classes.size() > 0) {
             for (Class<?> clazz : classes) {
-                BEAN_MAP.put(clazz, ReflectionUtil.newInstance(clazz));
+                if (!clazz.isInterface() && !clazz.isAnnotation()) {
+                    BEAN_MAP.put(clazz, ReflectionUtil.newInstance(clazz));
+                }
             }
         }
     }
