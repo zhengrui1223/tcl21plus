@@ -8,7 +8,7 @@
     <!-- dataSource的配置1 -->
     <!--<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${db.driver}" />
-        <property name="url" value="${db.url}" />
+        <property name="remote_access" value="${db.remote_access}" />
         <property name="username" value="${db.user}" />
         <property name="password" value="${db.password}" />
         &lt;!&ndash; data source configuration &ndash;&gt;
@@ -27,7 +27,7 @@
 
     <!-- dataSource 配置2 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <!-- 基本属性 url、user、password -->
+        <!-- 基本属性 remote_access、user、password -->
 
         <property name="driverClassName" value="${db.driver}"/>
         <property name="url" value="${db.url}"/>

@@ -131,7 +131,7 @@ public class HttpClientUtil {
         JSONObject jsonResp = new JSONObject();
         List<NameValuePair> params = new ArrayList<NameValuePair>();
 
-        //拼接get方式URL, url?a=11&b=22
+        //拼接get方式URL, remote_access?a=11&b=22
         if (paramsMap != null && !paramsMap.isEmpty()) {
             for (String key: paramsMap.keySet()) {
                 params.add(new BasicNameValuePair(key, paramsMap.get(key)));
@@ -139,7 +139,7 @@ public class HttpClientUtil {
             url += StringPool.QUESTION + URLEncodedUtils.format(params, StringPool.UTF8);
         }
 
-        log.info("request get url = " + url);
+        log.info("request get remote_access = " + url);
 
         CloseableHttpClient httpClient = SSLUtil.createSSLInsecureClient();
         HttpGet get = new HttpGet(url);
