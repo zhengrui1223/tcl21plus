@@ -6,7 +6,7 @@ import java.util.Map;
 
 /**
  * Created by admin on 2017/7/11.
- * 线程安全写法
+ * 线程安全写法, synchronized作用在方法上，效率较低
  */
 public class Singleton3 {
     private Map<String, Object> map = new HashMap<String, Object>();
