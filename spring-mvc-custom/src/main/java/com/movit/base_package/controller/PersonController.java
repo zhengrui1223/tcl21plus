@@ -22,7 +22,7 @@ public class PersonController {
     @ResponseBody
     @RequestMapping(path = "/person/getAll", method = "GET")
     public List<User> getUserList(Param param) {
-        List<User> users = userService.getUserList();
+        List<User> users = userService.getUserList(null);
         return users;
     }
 

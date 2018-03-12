@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.movit.base_package.controller.UserController;
 import com.movit.base_package.model.User;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /************************************************************
@@ -15,16 +16,40 @@ import java.util.List;
 
 public class ControllerTest {
 
-    public static void main(String[] args) throws JsonProcessingException {
+    public static void main(String[] args) {
 
+        List<Thread> list = new ArrayList<Thread>();
+        for (int i=0; i<20; i++) {
+            ConcurrentTest thread = new ConcurrentTest();
+            list.add(thread);
+        }
+
+        for (Thread thread : list) {
+            thread.start();
+        }
+
+        while (Thread.activeCount() > 1) {
+            Thread.yield();
+        }
+
+    }
+
+}
+
+class ConcurrentTest extends Thread{
+    @Override
+    public void run() {
         Class<?>[] classes = new Class<?>[]{ClassHelper.class, BeanIocHelper.class, BeanDIHelper.class, };
         for (Class<?> clazz: classes) {
             ClassUtil.loadClass(clazz.getName(), true);
         }
 
         UserController userController = BeanIocHelper.getBean(UserController.class);
-        List<User> userList = userController.getUserList();
-        System.out.println(new ObjectMapper().writeValueAsString(userList));
+        List<User> userList = userController.getUserList(Thread.currentThread().getName());
+        try {
+            System.out.println(new ObjectMapper().writeValueAsString(userList));
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
     }
-
 }

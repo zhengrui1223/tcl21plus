@@ -21,8 +21,8 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping(path = "/user/getAll", method = "GET")
-    public List<User> getUserList() {
-        List<User> users = userService.getUserList();
+    public List<User> getUserList(String param) {
+        List<User> users = userService.getUserList(param);
         return users;
     }
 

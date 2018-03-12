@@ -13,8 +13,8 @@ public class UserService {
     @Autowired
     private UserDao userDao;
 
-    public List<User> getUserList() {
+    public List<User> getUserList(String param) {
 
-        return userDao.getUserList();
+        return userDao.getUserList(param);
     }
 }
