@@ -12,5 +12,6 @@
     <import resource="classpath:spring/spring-jms.xml"/>
     <import resource="classpath:spring/spring-memcached.xml"/>
     <import resource="classpath:spring/spring-task.xml"/>
+    <import resource="classpath:spring/spring-redis-context.xml"/>
 
 </beans>

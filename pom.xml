@@ -16,6 +16,7 @@
     </modules>
 
     <properties>
+        <java.version>1.8</java.version>
         <!--设置 Spring 的版本-->
         <org.springframework.version>4.1.2.RELEASE</org.springframework.version>
         <org.apache.activemq>5.7.0</org.apache.activemq>
