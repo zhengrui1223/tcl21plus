@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="user" class="com.movit.study.model.User" scope="prototype"></bean>
+
+    <!-- 通过BeanFactoryAutoWare,实现每次获取不同的User实例,就相当于每次获取User的
+    时候都从BeanFactory中再取一遍 -->
+    <bean id="userBeanFactoryAware" class="com.movit.study.spring.ioc.bean_factory_aware.UserBeanFactoryAware" scope="prototype">
+    </bean>
+
+
+</beans>

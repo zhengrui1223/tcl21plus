@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="userFactoryBean" class="com.movit.study.spring.ioc.factory_bean.UserFactoryBean">
+    </bean>
+
+    <!-- 通过<lookup-method>的name属性指定需要注入的方法名， bean属性指定需要注入的对象 -->
+    <bean id="getUserBean" class="com.movit.study.spring.ioc.factory_bean.GetUserBean">
+        <lookup-method name="getUser" bean="userFactoryBean"/>
+    </bean>
+
+
+</beans>

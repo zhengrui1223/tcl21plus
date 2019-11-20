@@ -1,0 +1,127 @@
+package com.movit.study.socket.nio.timesample;
+
+import org.springframework.util.StringUtils;
+
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.nio.ByteBuffer;
+import java.nio.channels.SelectionKey;
+import java.nio.channels.Selector;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Set;
+
+/************************************************************
+ * @Description:
+ * @Author: zhengrui
+ * @Date 2019-10-28 14:20
+ ************************************************************/
+
+public class MultiplexerTimeServer implements Runnable {
+
+    private Selector selector;
+
+    private ServerSocketChannel serverChannel;
+
+    private volatile boolean stop;
+
+    public MultiplexerTimeServer(int port) {
+
+        try {
+            selector = Selector.open();
+            serverChannel = ServerSocketChannel.open();
+            serverChannel.configureBlocking(false);
+            serverChannel.socket().bind(new InetSocketAddress(port), 1024);
+            serverChannel.register(selector, SelectionKey.OP_ACCEPT);
+            System.out.println("The time server is start in port " + port);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+    }
+
+    public void stop() {
+        this.stop = true;
+    }
+
+    @Override
+    public void run() {
+
+        while (!stop) {
+            try {
+                int count = selector.select(1000);
+                if (count < 1) continue;
+                Set<SelectionKey> selectionKeys = selector.selectedKeys();
+                Iterator<SelectionKey> iterator = selectionKeys.iterator();
+                SelectionKey key = null;
+                while (iterator.hasNext()) {
+                    key = iterator.next();
+                    iterator.remove();
+
+                    try {
+                        handleInput(key);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        key.cancel();
+                        if (key.channel() != null) key.channel().close();
+                    }
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if (selector != null) {
+            try {
+                selector.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void handleInput(SelectionKey key) throws IOException, InterruptedException {
+        if (key.isValid()) {
+
+            //处理接入的请求消息
+            if (key.isAcceptable()) {
+                ServerSocketChannel channel = (ServerSocketChannel) key.channel();
+                SocketChannel accept = channel.accept();
+                accept.configureBlocking(false);
+                accept.register(this.selector, SelectionKey.OP_READ);
+            }
+
+            //读操作
+            if (key.isReadable()) {
+                SocketChannel channel = (SocketChannel) key.channel();
+                ByteBuffer readBuffer = ByteBuffer.allocate(1024);
+                int readBytes = channel.read(readBuffer);
+                if (readBytes > 0) {
+                    readBuffer.flip();
+                    byte[] bytes = new byte[readBuffer.remaining()];
+                    readBuffer.get(bytes);
+                    String body = new String(bytes, "UTF-8");
+                    System.out.println("The time server receive order : " + body);
+                    String currentTime = "Query Time order".equalsIgnoreCase(body) ? new Date(System.currentTimeMillis()).toString() : "Bad order";
+                    doWrite(channel, currentTime);
+                } else if (readBytes < 0) {
+                    key.cancel();
+                    serverChannel.close();
+                }
+            }
+        }
+    }
+
+    private void doWrite(SocketChannel channel, String response) throws IOException {
+        if (!StringUtils.isEmpty(response)) {
+            byte[] bytes = response.getBytes();
+            ByteBuffer writeBuffer = ByteBuffer.allocate(bytes.length);
+            writeBuffer.put(bytes);
+            writeBuffer.flip();
+            channel.write(writeBuffer);
+        }
+    }
+
+}
