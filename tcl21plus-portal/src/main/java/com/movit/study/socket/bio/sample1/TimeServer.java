@@ -23,6 +23,7 @@ public class TimeServer {
 
             while (true) {
                 socket = serverSocket.accept();
+                System.out.println("accept-----------");
                 new Thread(new TimeServerHandler(socket)).start();
             }
 

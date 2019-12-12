@@ -52,6 +52,7 @@ public class MultiplexerTimeServer implements Runnable {
         while (!stop) {
             try {
                 int count = selector.select(1000);
+                System.out.println("execute select---------------------");
                 if (count < 1) continue;
                 Set<SelectionKey> selectionKeys = selector.selectedKeys();
                 Iterator<SelectionKey> iterator = selectionKeys.iterator();
