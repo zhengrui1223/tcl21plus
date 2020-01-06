@@ -12,7 +12,7 @@ import java.io.IOException;
  * @date 2017-09-19 14:19
  ************************************************************/
 
-@WebFilter(asyncSupported = false, filterName = "/myFilter", urlPatterns = {"/*"})
+//@WebFilter(asyncSupported = false, filterName = "/myFilter", urlPatterns = {"/*"})
 public class MyFilter implements Filter{
     public void init(FilterConfig filterConfig) throws ServletException {
         System.out.println("myFilter init........");

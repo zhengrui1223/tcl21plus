@@ -1,4 +1,4 @@
-package com.movit.study.java8.lambda;
+package com.movit.study.base_of_java.java8.lambda;
 
 /************************************************************
  * @Description: TODO

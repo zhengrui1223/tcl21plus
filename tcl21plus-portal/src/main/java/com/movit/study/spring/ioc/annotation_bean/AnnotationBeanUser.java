@@ -1,8 +1,5 @@
 package com.movit.study.spring.ioc.annotation_bean;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class AnnotationBeanUser {
     private Integer id;
     private String name;
@@ -32,4 +29,5 @@ public class AnnotationBeanUser {
     public void setId(Integer id) {
         this.id = id;
     }
+
 }

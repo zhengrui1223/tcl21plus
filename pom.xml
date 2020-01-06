@@ -29,6 +29,8 @@
         <version.commons.io>2.4</version.commons.io>
         <version.commons.codec>1.9</version.commons.codec>
         <version.commons.collections>3.2.1</version.commons.collections>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -318,6 +320,12 @@
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
             <version>5.0.0.Alpha1</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.5.6</version>
         </dependency>
 
     </dependencies>
