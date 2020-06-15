@@ -16,7 +16,7 @@
         <version.commons.lang>2.6</version.commons.lang>
         <version.commons.io>2.4</version.commons.io>
         <version.commons.codec>1.9</version.commons.codec>
-        <version.commons.collections>3.2.1</version.commons.collections>
+        <version.commons.collections>3.2.2</version.commons.collections>
         <slf4j.version>1.7.7</slf4j.version>
     </properties>
 
